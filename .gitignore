@@ -1,0 +1,4 @@
+.DS_Store
+.workspace
+.gui/bin
+.gui/node_modules

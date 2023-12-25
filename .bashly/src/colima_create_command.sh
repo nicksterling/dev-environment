@@ -1,0 +1,1 @@
+colima start --arch aarch64 --vm-type=vz --vz-rosetta -c 8 -m 12 -d 100

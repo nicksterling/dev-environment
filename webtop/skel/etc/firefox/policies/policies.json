@@ -1,0 +1,25 @@
+{
+  "policies": {
+    "Extensions": {
+      "Install": [
+        "https://addons.mozilla.org/firefox/downloads/file/4141256/ublock_origin-1.54.0.xpi",
+        "https://addons.mozilla.org/firefox/downloads/file/4210517/1password_x_password_manager-2.18.2.xpi",
+        "https://addons.mozilla.org/firefox/downloads/file/4128489/darkreader-4.9.73.xpi",
+        "https://addons.mozilla.org/firefox/downloads/file/4040738/cookie_autodelete-3.8.2.xpi",
+        "https://addons.mozilla.org/firefox/downloads/file/4203344/privacy_badger17-2023.12.1.xpi",
+        "https://addons.mozilla.org/firefox/downloads/file/4138156/duckduckgo_for_firefox-2023.12.6.xpi"
+      ]
+    },
+    "ExtensionUpdate": true,
+    "DisableTelemetry": true,
+    "DisableFirefoxStudies": true,
+    "EnableTrackingProtection": {
+      "Value": true,
+      "Locked": false,
+      "Cryptomining": true,
+      "Fingerprinting": true,
+      "EmailTracking": true,
+      "Exceptions": []
+    }
+  }
+}

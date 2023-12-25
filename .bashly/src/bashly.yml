@@ -1,0 +1,89 @@
+name: wt
+help: Webtop Docker Management Tool
+version: "0.1.1"
+
+commands:
+  - name: gui
+    help: Open the Webtop GUI in an electron window
+    
+    dependencies:
+    - docker
+
+    commands:
+    - name: start
+      help: Start the Webtop GUI
+
+      flags:
+      - long: --os
+        short: -o
+        arg: os
+        required: true
+        help: The operating system to build for
+        allowed: [linux, darwin, win32]
+
+      - long: --arch
+        short: -a
+        arg: arch
+        required: true
+        help: The architecture to build for
+        allowed: [x64, arm64]
+    
+    - name: stop
+      help: Stop the Webtop GUI
+
+    - name: build
+      help: Build the Webtop GUI
+
+      flags:
+      - long: --os
+        short: -o
+        arg: os
+        required: true
+        help: The operating system to build for
+        allowed: [linux, darwin, win32]
+
+      - long: --arch
+        short: -a
+        arg: arch
+        required: true
+        help: The architecture to build for
+        allowed: [x64, arm64]
+
+  - name: start
+    help: Start the Webtop docker container
+    flags:
+    - long: --env
+      short: -e
+      arg: env
+      help: Environment variables to pass to the docker compose command
+      repeatable: true
+
+  - name: stop
+    help: Stop the running Webtop Docker container
+    flags:
+    - long: --delete-volumes
+      short: -d
+      help: Delete the volumes when stopping the container
+      default: false
+
+  - name: colima
+    help: Create or destroy a colima virtual machine
+    private: true
+    
+    dependencies:
+    - colima
+    - docker
+
+    commands:
+    - name: status
+      help: Show the status of the colima virtual machine
+
+    - name: create
+      help: Create a colima virtual machine
+
+    - name: destroy
+      help: Destroy the colima virtual machine
+      
+
+    
+

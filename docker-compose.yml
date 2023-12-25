@@ -1,0 +1,34 @@
+---
+version: "3"
+services:
+  webtop:
+    build: ./webtop
+    privileged: true
+    security_opt:
+      - seccomp:unconfined 
+    environment:
+      - PUID=${PUID:-501}              # Change to your user id
+      - PGID=${PGID:-20}               # Change to your group id
+      - TZ=${TZ:-America/Denver}       # Change to your timezone
+      - LC_ALL=${LC_ALL:-en_US.UTF-8}  # Change to your locale
+      - START_DOCKER=${START_DOCKER:-false}            # We don't want to start docker in docker with the default settings. Our scripts will set it to run in an ext4 filesystem
+      - DOCKER_FILESYSTEM=${DOCKER_FILESYSTEM:-ext4}   # We want to run docker in docker with an ext4 filesystem
+      - TITLE=${TITLE:-Webtop}         # Change to your desired title 
+    volumes:
+      - ${DOCKER_MOUNT:-docker}:/opt/docker
+      - ${WORKSPACE_DIR:-./.workspace}:/config
+      - ${CACHE_MOUNT:-cache}:/config/.cache
+      - ${EXTERNAL_MOUNT:-.}:/opt/external
+    shm_size: "1gb"
+    network_mode: "service:proxy"
+    restart: unless-stopped
+  # This proxy is used to allow the webtop to access either the host or to a VPN network
+  proxy:
+    image: alpine:latest
+    command: tail -f /dev/null
+    ports:
+    # Grab a port from a .env variable or use 3001
+    - "${PORT:-3001}:3001"
+volumes:
+  docker:    # Let's keep the docker data in a volume 
+  cache:     # The cache folder gets very large and the volume mount can be slow. 

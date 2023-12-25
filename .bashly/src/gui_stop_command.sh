@@ -1,0 +1,1 @@
+echo "Ummm... I haven't implemented that yet. You can just terminate the app manually."
