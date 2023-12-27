@@ -27,12 +27,16 @@ FROM lscr.io/linuxserver/webtop:debian-mate
 
 RUN apt-get update && \ 
     apt-get install -y arc-theme \
+    age \
     build-essential \
     curl \
+    dnsutils \
     firefox-esr \
     git \
     gpg \
     htop \
+    iputils-ping \
+    mate-backgrounds \
     tmux \
     tree \
     unzip \

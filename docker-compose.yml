@@ -4,7 +4,7 @@ services:
   webtop:
     build: 
       context: webtop
-      dockerfile: Dockerfile.debian-mate
+      dockerfile: Dockerfile
     privileged: true
     security_opt:
       - seccomp:unconfined 
@@ -16,6 +16,7 @@ services:
       - START_DOCKER=${START_DOCKER:-false}            # We don't want to start docker in docker with the default settings. Our scripts will set it to run in an ext4 filesystem
       - DOCKER_FILESYSTEM=${DOCKER_FILESYSTEM:-ext4}   # We want to run docker in docker with an ext4 filesystem
       - TITLE=${TITLE:-Webtop}         # Change to your desired title 
+      - SLEEP_TIMEOUT=${SLEEP_TIMEOUT:-8}              # Change to your desired sleep timeout
     volumes:
       - ${DOCKER_MOUNT:-docker}:/opt/docker
       - ${WORKSPACE_DIR:-./.workspace}:/config

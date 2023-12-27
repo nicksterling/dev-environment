@@ -1,8 +1,12 @@
 #!/bin/bash
 
 # This script is needed due to a strane timing issue....
-echo "Sleeping for 5 seconds to allow the container to start up..."
-sleep 5
+if [ -z "$SLEEP_TIMEOUT" ]; then
+    SLEEP_TIMEOUT=5
+fi
+echo "Sleeping for $SLEEP_TIMEOUT seconds"
+sleep $SLEEP_TIMEOUT
+
 
 echo "COPYING .zshrc"
 sudo -u abc cp /backup/config/.zshrc /config/.zshrc
