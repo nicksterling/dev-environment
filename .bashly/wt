@@ -509,7 +509,7 @@ wt_start_command() {
       echo $val >> .env-tmp
   done
 
-  docker-compose  --env-file .env-tmp up -d
+  docker-compose  --env-file .env-tmp up -d --force-recreate
 
   rm .env-tmp
 }

@@ -25,12 +25,6 @@ if [ ! -d "$OH_MY_ZSH_DIR" ]; then
   echo "******* Changing ownership of /backup/config to abc *******"
   chown -R abc:abc /backup/config
 
-  # Copy the config files from the backup to the config folder as abc
-  echo "******* Copying config files *******"
-  sudo -u abc cp -a /backup/config/. /config/
-  if [ $? -ne 0 ]; then
-    echo "Failed to copy config files"
-    exit 1
-  fi
+  sudo -u abc copy /backup/config/.zshrc /config/.zshrc
 
 fi

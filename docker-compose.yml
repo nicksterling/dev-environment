@@ -2,7 +2,9 @@
 version: "3"
 services:
   webtop:
-    build: ./webtop
+    build: 
+      context: webtop
+      dockerfile: Dockerfile.debian-mate
     privileged: true
     security_opt:
       - seccomp:unconfined 

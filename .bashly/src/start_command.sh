@@ -15,7 +15,7 @@ for val in "${ADDR[@]}"; do
 done
 
 ## Use the .env file with docker-compose
-docker-compose  --env-file .env-tmp up -d
+docker-compose  --env-file .env-tmp up -d --force-recreate
 
 ## Remove the .env-tmp file
 rm .env-tmp
