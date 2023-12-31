@@ -2,3 +2,5 @@
 .workspace
 .gui/bin
 .gui/node_modules
+.env
+docker-compose-override.yml

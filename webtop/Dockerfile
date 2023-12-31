@@ -1,32 +1,10 @@
 # Use the linuxserver/webtop:ubuntu-mate image as the base
 FROM lscr.io/linuxserver/webtop:debian-mate
 
-# Install several packages using yay
-# RUN yay -Syu --noconfirm \
-#     arc-gtk-theme \
-#     arc-icon-theme \
-#     age \
-#     base-devel \
-#     dnsutils \
-#     firefox \
-#     htop \
-#     iputils \
-#     net-tools \
-#     plank \
-#     tmux \
-#     tree \
-#     ttf-ubuntu-mono-nerd \ 
-#     aur/ulauncher \
-#     unzip \
-#     vim \
-#     aur/visual-studio-code-bin \
-#     wget \
-#     zsh && \
-#     # Clear the package manager cache to reduce the size of the image
-#     yay -Scc --noconfirm
-
 RUN apt-get update && \ 
-    apt-get install -y arc-theme \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    arc-theme \
     age \
     build-essential \
     curl \
